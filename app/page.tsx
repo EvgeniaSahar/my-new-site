@@ -1026,7 +1026,44 @@ export default function Home() {
                               : imageTone === 4
                                 ? "linear-gradient(135deg, #bbf7d0, #fde68a)"
                                 : "linear-gradient(135deg, #fecaca, #bfdbfe)";
-                    return (
+                    const shouldShowAd = cardIndex === 6 || cardIndex === 16;
+                    return [
+                      shouldShowAd ? (
+                        <div
+                          key={`ad-${cardIndex}`}
+                          className="col-span-2 max-[600px]:col-span-1 overflow-hidden rounded-3xl border border-zinc-200 bg-white"
+                        >
+                          <div className="relative flex">
+                            <button
+                              type="button"
+                              aria-label="Закрыть рекламу"
+                              className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-zinc-500 shadow-sm"
+                            >
+                              ×
+                            </button>
+                            <div className="w-[240px] shrink-0 bg-gradient-to-br from-zinc-100 to-blue-100">
+                              <div className="p-5">
+                                <div className="inline-flex rounded-md bg-white/80 px-2 py-1 text-[12px] font-semibold text-blue-600">
+                                  МИРАПОЛИС
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex-1 p-5">
+                              <div className="text-[14px] font-semibold text-zinc-900">МИРАПОЛИС</div>
+                              <div className="mt-1 text-[12px] leading-snug text-zinc-600">
+                                Бизнес-класс от 9,5 млн ₽. Квартал рядом с ВДНХ.
+                              </div>
+                              <div className="mt-2 text-[12px] text-zinc-500">м. Ростокино · 9 минут пешком</div>
+                              <button
+                                type="button"
+                                className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-[13px] font-semibold text-white"
+                              >
+                                Узнать подробнее
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null,
                       <div
                         key={l.id}
                         data-listing-row={l.id}
@@ -1156,7 +1193,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    );
+                    ];
                   })}
                 </div>
 
@@ -1232,7 +1269,7 @@ export default function Home() {
           listCollapsed && "min-[900px]:w-full",
         )}
       >
-        {/* Top bar: toggle + map info */}
+        {/* Top bar: toggle */}
         <div className="pointer-events-auto absolute left-4 top-4 z-[60] flex items-center gap-2">
           <button
             type="button"
@@ -1251,11 +1288,6 @@ export default function Home() {
             </svg>
             {listCollapsed ? "Показать список" : "Раскрыть карту"}
           </button>
-          <div className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white/90 px-3 py-2 text-sm backdrop-blur">
-            <div className="font-medium">Simulated map</div>
-            <div className="text-zinc-600">({mapAreaId}, zoom {zoomLevel}x)</div>
-            {isLoading ? <div className="ml-2 text-zinc-500">Updating…</div> : null}
-          </div>
         </div>
 
         {/* Map controls */}
