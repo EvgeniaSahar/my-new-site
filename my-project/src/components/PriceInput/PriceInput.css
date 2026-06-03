@@ -1,0 +1,157 @@
+.price-input {
+  --price-navy: #1a2b4c;
+  --price-grey: #94a3b8;
+  --price-red: #ef4444;
+  --price-blue: #3b82f6;
+  --price-bg: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.price-input__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 88px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: var(--price-bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: text;
+}
+
+.price-input--rejected .price-input__field {
+  animation: price-input-shake 0.42s ease;
+}
+
+@keyframes price-input-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.price-input__display {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1ch;
+  pointer-events: none;
+  user-select: none;
+}
+
+.price-input__digits {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  white-space: pre;
+}
+
+.price-input__digit {
+  display: inline-block;
+  transform-origin: 50% 55%;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.price-input__input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: transparent;
+  caret-color: var(--price-blue);
+  padding: 0 16px;
+  cursor: text;
+}
+
+.price-input--disabled .price-input__field {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.price-input--disabled .price-input__input {
+  cursor: not-allowed;
+}
+
+.price-input__skeleton {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #f1f5f9 50%,
+    #e2e8f0 100%
+  );
+  background-size: 200% 100%;
+  animation: price-input-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes price-input-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.price-input__hint {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--price-grey);
+}
+
+.price-input--disabled .price-input__hint {
+  opacity: 0.6;
+}
+
+.price-input__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--price-red);
+}
+
+.price-input__error-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
