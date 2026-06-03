@@ -1,1 +1,0 @@
-export { WiseAmountInput } from './WiseAmountInput'
