@@ -1,0 +1,114 @@
+.daisy-stage {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background:
+    radial-gradient(circle at 50% 45%, #f7f7f5 0%, #ededeb 60%, #e4e3e0 100%);
+  overflow: hidden;
+}
+
+.daisy-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 280px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.daisy-controls label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #152242;
+}
+
+.daisy-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.daisy-controls input[type='range'] {
+  flex: 1;
+  accent-color: #152242;
+}
+
+.daisy-count {
+  min-width: 28px;
+  text-align: right;
+  font-size: 15px;
+  font-weight: 700;
+  color: #152242;
+  font-variant-numeric: tabular-nums;
+}
+
+.daisy-box {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.daisy-group {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.daisy-pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: auto;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 0 8px;
+  border: none;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #152242;
+  font-family: 'Circular', system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    0 0 1px rgba(0, 0, 0, 0.18);
+  transition:
+    box-shadow 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease,
+    scale 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, scale;
+}
+
+.daisy-pin:hover,
+.daisy-pin.is-active {
+  scale: 1.12;
+  background: #152242;
+  color: #ffffff;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.22),
+    0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.daisy-pin:focus-visible {
+  outline: 2px solid #006cfd;
+  outline-offset: 2px;
+}
